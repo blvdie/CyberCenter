@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Центр Киберспорта — компьютерный клуб в Санкт-Петербурге</title>
+  <link rel="icon" href="assets/logo_net.svg" type="image/x-icon" />
+  <meta name="description" content="Круглосуточный компьютерный клуб на Кременчугской, 11: мощные ПК до RTX 4070 Ti, мониторы до 360 Гц, ночные пакеты и PS5 Pro — от 140 ₽ в час.">
+  <link rel="stylesheet" href="cybercenter.css">
+</head>
+<body>
+
+  <!-- SVG-спрайт иконок -->
+  <svg class="sprite" aria-hidden="true">
+    <symbol id="i-monitor" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"></rect><path d="M8 20h8"></path><path d="M12 16v4"></path></g></symbol>
+    <symbol id="i-brain" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"></path><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"></path><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"></path></g></symbol>
+    <symbol id="i-gamepad" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 11h4"></path><path d="M8 9v4"></path><path d="M15 12h.01"></path><path d="M18 10h.01"></path><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.544-.604-6.584-.685-7.258A4 4 0 0 0 17.32 5z"></path></g></symbol>
+    <symbol id="i-mouse" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="6"></rect><path d="M12 7v4"></path></g></symbol>
+    <symbol id="i-keyboard" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M6 9h.01"></path><path d="M10 9h.01"></path><path d="M14 9h.01"></path><path d="M18 9h.01"></path><path d="M7 15h10"></path></g></symbol>
+    <symbol id="i-headset" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path></g></symbol>
+    <symbol id="i-floppy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path><path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"></path><path d="M7 3v4a1 1 0 0 0 1 1h7"></path></g></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c1.2 6.9 4.9 10.6 11.8 11.8l.2.2-.2.2C16.9 13.4 13.2 17.1 12 24c-1.2-6.9-4.9-10.6-11.8-11.8L0 12l.2-.2C7.1 10.6 10.8 6.9 12 0z"></path></symbol>
+    <symbol id="i-hex" viewBox="0 0 100 100"><path fill="none" stroke="currentColor" stroke-width="2" d="M50 3 91 26.5v47L50 97 9 73.5v-47z"></path></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"></path></symbol>
+  </svg>
+
+  <!-- Фоновые свечения страницы -->
+  <div class="page-glows" aria-hidden="true">
+    <div class="page-glows__blue"></div>
+    <div class="page-glows__red"></div>
+    <div class="page-glows__purple"></div>
+  </div>
+
+  <!-- ============ ШАПКА ============ -->
+  <header class="site-header">
+    <div class="site-header__bar">
+      <div class="site-header__glow" aria-hidden="true">
+        <span class="site-header__glow-blue"></span>
+        <span class="site-header__glow-red"></span>
+      </div>
+      <a class="site-header__logo" href="#top">
+        <img src="assets/logo_full.svg" alt="Логотип Центра Киберспорта" class="site-header__logo-img">
+      </a>
+      <nav class="site-header__nav" aria-label="Основная навигация">
+        <a href="#specs">ПК и залы</a>
+        <a href="#promo">Акции</a>
+        <a href="#prices">Цены</a>
+        <a href="#gallery">Клуб</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <div class="site-header__contacts">
+        <a class="site-header__phone" href="tel:+79291015986">
+          <span class="site-header__phone-number">+7 (929) 101-59-86</span>
+          <span class="site-header__phone-note">круглосуточно</span>
+        </a>
+        <a class="btn btn--cta site-header__cta" href="#booking">Забронировать</a>
+        <button type="button" class="site-header__burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Мобильная навигация" hidden>
+      <a href="#specs">ПК и залы</a>
+      <a href="#promo">Акции</a>
+      <a href="#prices">Цены</a>
+      <a href="#gallery">Клуб</a>
+      <a href="#contacts">Контакты</a>
+      <div class="mobile-menu__footer">
+        <a class="btn btn--cta" href="#booking">Забронировать</a>
+        <a class="mobile-menu__phone" href="tel:+79291015986">+7 (929) 101-59-86<small>круглосуточно</small></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top" aria-label="Главная">
+      <div class="hero__box">
+        <figure class="hero__media" aria-hidden="true">
+        </figure>
+        <div class="hero__scrim" aria-hidden="true"></div>
+        <div class="hero__deco" aria-hidden="true">
+          <span class="hero__glow hero__glow--blue"></span>
+          <span class="hero__glow hero__glow--red"></span>
+          <svg class="hero__hex hero__hex--lg" width="150" height="150"><use href="#i-hex"></use></svg>
+          <svg class="hero__hex hero__hex--sm" width="84" height="84"><use href="#i-hex"></use></svg>
+          <svg class="hero__hex hero__hex--left1" width="110" height="110"><use href="#i-hex"></use></svg>
+          <svg class="hero__hex hero__hex--left2" width="58" height="58"><use href="#i-hex"></use></svg>
+          <svg class="hero__spark hero__spark--1" width="24" height="24"><use href="#i-spark"></use></svg>
+          <svg class="hero__spark hero__spark--2" width="14" height="14"><use href="#i-spark"></use></svg>
+          <svg class="hero__spark hero__spark--3" width="18" height="18"><use href="#i-spark"></use></svg>
+          <span class="stripes stripes--hero-l"><i></i><i></i><i></i></span>
+          <span class="stripes stripes--hero-r"><i></i><i></i><i></i></span>
+          <span class="glow-bar glow-bar--hero-blue"></span>
+          <span class="glow-bar glow-bar--hero-red"></span>
+        </div>
+        <div class="hero__content">
+          <p class="hero__badge">Санкт-Петербург · Кременчугская, 11 · открыто 24/7</p>
+          <h1 class="hero__title">Центр<br>Киберспорта</h1>
+          <span class="hero__divider" aria-hidden="true"></span>
+          <p class="hero__subtitle">Мощные ПК до RTX 4070 Ti, мониторы до 360 Гц, ночные пакеты и PS5 Pro — от 140 рублей в час</p>
+          <div class="hero__actions">
+            <a class="btn btn--cta btn--lg" href="#booking">Забронировать визит</a>
+            <a class="btn btn--ghost btn--lg" href="#prices">Цены</a>
+          </div>
+        </div>
+      </div>
+      <ul class="stats" aria-label="Ключевые факты">
+        <li class="stats__item stats__item--blue"><svg class="stats__hex" width="64" height="64" aria-hidden="true"><use href="#i-hex"></use></svg><strong>24/7</strong><span>без выходных</span></li>
+        <li class="stats__item stats__item--red"><svg class="stats__hex" width="64" height="64" aria-hidden="true"><use href="#i-hex"></use></svg><strong>от 140 ₽</strong><span>за час игры</span></li>
+        <li class="stats__item stats__item--purple"><svg class="stats__hex" width="64" height="64" aria-hidden="true"><use href="#i-hex"></use></svg><strong>360 Гц</strong><span>мониторы в bootcamp</span></li>
+        <li class="stats__item stats__item--blue"><svg class="stats__hex" width="64" height="64" aria-hidden="true"><use href="#i-hex"></use></svg><strong>PS5 Pro</strong><span>консольная зона</span></li>
+      </ul>
+    </section>
+
+    <!-- ============ ПК И ЗАЛЫ ============ -->
+    <section class="section" id="specs" aria-labelledby="specs-title">
+      <span class="section__watermark section__watermark--blue" aria-hidden="true">GAME ZONE</span>
+      <svg class="section__hex section__hex--specs-1" width="120" height="120" aria-hidden="true"><use href="#i-hex"></use></svg>
+      <svg class="section__hex section__hex--specs-2" width="64" height="64" aria-hidden="true"><use href="#i-hex"></use></svg>
+      <svg class="section__spark section__spark--specs" width="18" height="18" aria-hidden="true"><use href="#i-spark"></use></svg>
+      <span class="stripes stripes--specs" aria-hidden="true"><i></i><i></i><i></i></span>
+      <div class="container reveal">
+        <header class="section__head">
+          <h2 class="section__title" id="specs-title">
+            <svg class="section__title-spark section__title-spark--red" width="16" height="16" aria-hidden="true"><use href="#i-spark"></use></svg>
+            Четыре зоны — под любую игру
+            <svg class="section__title-spark section__title-spark--red" width="16" height="16" aria-hidden="true"><use href="#i-spark"></use></svg>
+          </h2>
+          <p class="section__lead">Железо и периферия в каждой зоне</p>
+        </header>
+        <div class="zone-grid">
+
+          <article class="zone-card zone-card--blue">
+            <span class="zone-card__bar" aria-hidden="true"></span>
+            <span class="zone-card__glow" aria-hidden="true"></span>
+            <svg class="zone-card__hex" width="90" height="90" aria-hidden="true"><use href="#i-hex"></use></svg>
+            <header class="zone-card__head">
+              <span class="badge badge--blue">База</span>
+              <h3 class="zone-card__name">СТАНДАРТ</h3>
+              <p class="zone-card__price"><strong>от 140 ₽</strong> <span>/ час</span></p>
+            </header>
+            <ul class="spec-list">
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-monitor"></use></svg><span class="visually-hidden">Монитор:</span>24", IPS, 240 Гц</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-brain"></use></svg><span class="visually-hidden">Процессор:</span>Intel Core i5-12400F</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-gamepad"></use></svg><span class="visually-hidden">Видеокарта:</span>RTX 3060</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-floppy"></use></svg><span class="visually-hidden">Память:</span>DDR4 16 GB</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-mouse"></use></svg><span class="visually-hidden">Мышь:</span>Logitech G102</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-keyboard"></use></svg><span class="visually-hidden">Клавиатура:</span>Razer BlackWidow V3</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-headset"></use></svg><span class="visually-hidden">Наушники:</span>HyperX Cloud II</li>
+            </ul>
+          </article>
+
+          <article class="zone-card zone-card--purple">
+            <span class="zone-card__bar" aria-hidden="true"></span>
+            <span class="zone-card__glow" aria-hidden="true"></span>
+            <svg class="zone-card__hex" width="90" height="90" aria-hidden="true"><use href="#i-hex"></use></svg>
+            <header class="zone-card__head">
+              <span class="badge badge--purple">Оптимум</span>
+              <h3 class="zone-card__name">КОМФОРТ</h3>
+              <p class="zone-card__price"><strong>от 180 ₽</strong> <span>/ час</span></p>
+            </header>
+            <ul class="spec-list">
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-monitor"></use></svg><span class="visually-hidden">Монитор:</span>24", IPS, 240 Гц</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-brain"></use></svg><span class="visually-hidden">Процессор:</span>Intel Core i5-12400F</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-gamepad"></use></svg><span class="visually-hidden">Видеокарта:</span>RTX 5060</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-floppy"></use></svg><span class="visually-hidden">Память:</span>DDR4 32 GB</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-mouse"></use></svg><span class="visually-hidden">Мышь:</span>Logitech G102</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-keyboard"></use></svg><span class="visually-hidden">Клавиатура:</span>Razer BlackWidow V3</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-headset"></use></svg><span class="visually-hidden">Наушники:</span>HyperX Cloud II</li>
+            </ul>
+          </article>
+
+          <article class="zone-card zone-card--orange">
+            <span class="zone-card__bar" aria-hidden="true"></span>
+            <span class="zone-card__glow" aria-hidden="true"></span>
+            <svg class="zone-card__hex" width="90" height="90" aria-hidden="true"><use href="#i-hex"></use></svg>
+            <header class="zone-card__head">
+              <span class="badge badge--orange">Для команд</span>
+              <h3 class="zone-card__name">BOOTCAMP</h3>
+              <p class="zone-card__price"><strong>от 240 ₽</strong> <span>/ час</span></p>
+            </header>
+            <ul class="spec-list">
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-monitor"></use></svg><span class="visually-hidden">Монитор:</span>24", IPS, 360 Гц</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-brain"></use></svg><span class="visually-hidden">Процессор:</span>AMD Ryzen 7 7800X3D</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-gamepad"></use></svg><span class="visually-hidden">Видеокарта:</span>RTX 4060 Ti</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-floppy"></use></svg><span class="visually-hidden">Память:</span>DDR5 32 GB</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-mouse"></use></svg><span class="visually-hidden">Мышь:</span>Lunacy One</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-keyboard"></use></svg><span class="visually-hidden">Клавиатура:</span>Zone 51 ADAMANT TKL</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-headset"></use></svg><span class="visually-hidden">Наушники:</span>HyperX Cloud II</li>
+            </ul>
+          </article>
+
+          <article class="zone-card zone-card--red">
+            <span class="zone-card__bar" aria-hidden="true"></span>
+            <span class="zone-card__glow" aria-hidden="true"></span>
+            <svg class="zone-card__hex" width="90" height="90" aria-hidden="true"><use href="#i-hex"></use></svg>
+            <header class="zone-card__head">
+              <span class="badge badge--red">Максимум</span>
+              <h3 class="zone-card__name">VIP</h3>
+              <p class="zone-card__price"><strong>от 280 ₽</strong> <span>/ час</span></p>
+            </header>
+            <ul class="spec-list">
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-monitor"></use></svg><span class="visually-hidden">Монитор:</span>27", IPS, 240 Гц, 2K</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-brain"></use></svg><span class="visually-hidden">Процессор:</span>Intel Core i5-13600KF</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-gamepad"></use></svg><span class="visually-hidden">Видеокарта:</span>RTX 4070 Ti</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-floppy"></use></svg><span class="visually-hidden">Память:</span>DDR5 32 GB</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-mouse"></use></svg><span class="visually-hidden">Мышь:</span>Lunacy One</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-keyboard"></use></svg><span class="visually-hidden">Клавиатура:</span>DarkProject KD87A</li>
+              <li><svg width="20" height="20" aria-hidden="true"><use href="#i-headset"></use></svg><span class="visually-hidden">Наушники:</span>HyperX Cloud II</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ АКЦИИ И БОНУСЫ ============ -->
+    <section class="section" id="promo" aria-labelledby="promo-title">
+      <span class="section__watermark section__watermark--red" aria-hidden="true">BONUS</span>
+      <svg class="section__hex section__hex--promo-1" width="110" height="110" aria-hidden="true"><use href="#i-hex"></use></svg>
+      <svg class="section__hex section__hex--promo-2" width="58" height="58" aria-hidden="true"><use href="#i-hex"></use></svg>
+      <svg class="section__spark section__spark--promo" width="16" height="16" aria-hidden="true"><use href="#i-spark"></use></svg>
+      <span class="stripes stripes--promo" aria-hidden="true"><i></i><i></i><i></i></span>
+      <div class="container reveal">
+        <header class="section__head">
+          <h2 class="section__title" id="promo-title">
+            <svg class="section__title-spark section__title-spark--orange" width="16" height="16" aria-hidden="true"><use href="#i-spark"></use></svg>
+            Акции и бонусы
+            <svg class="section__title-spark section__title-spark--orange" width="16" height="16" aria-hidden="true"><use href="#i-spark"></use></svg>
+          </h2>
+          <p class="section__lead">Играть у нас выгоднее, чем кажется</p>
+        </header>
+        <div class="promo-grid">
+
+          <article class="promo-card promo-card--blue">
+            <span class="promo-card__streak" aria-hidden="true"></span>
+            <svg class="promo-card__hex" width="110" height="110" aria-hidden="true"><use href="#i-hex"></use></svg>
+            <span class="badge badge--blue">Такси</span>
+            <h3>Вернём сумму поездки на игровой баланс</h3>
+            <p>Приехали к нам на такси — покажите чек администратору, и стоимость поездки до 500 рублей вернётся на ваш игровой счёт.</p>
+          </article>
+
+          <article class="promo-card promo-card--red">
+            <svg class="promo-card__spark" width="20" height="20" aria-hidden="true"><use href="#i-spark"></use></svg>
+            <svg class="promo-card__hex" width="110" height="110" aria-hidden="true"><use href="#i-hex"></use></svg>
+            <span class="badge badge--red">За отзыв</span>
+            <h3>Зачислим 300 бонусов на игровой баланс</h3>
+            <p>Оставьте отзыв на Яндекс Картах, 2GIS или Langame — и мы начислим 300 бонусов на ваш баланс!</p>
+          </article>
+
+          <article class="promo-card promo-card--purple">
+            <span class="promo-card__streak promo-card__streak--purple" aria-hidden="true"></span>
+            <svg class="promo-card__hex" width="110" height="110" aria-hidden="true"><use href="#i-hex"></use></svg>
+            <span class="badge badge--purple">Турниры</span>
+            <h3>CS2 · Dota 2 · FC 26</h3>
+            <p>Регулярные турниры с призами на игровой баланс. Анонсы и регистрация — в нашем Telegram-канале <a href="https://t.me/cyber_center_kremen" target="_blank" rel="noopener">@cyber_center_kremen</a>.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ СТОИМОСТЬ ============ -->
+    <section class="section" id="prices" aria-labelledby="prices-title">
+      <span class="section__watermark section__watermark--blue section__watermark--play" aria-hidden="true">PLAY</span>
+      <svg class="section__hex section__hex--prices-1" width="110" height="110" aria-hidden="true"><use href="#i-hex"></use></svg>
+      <svg class="section__hex section__hex--prices-2" width="56" height="56" aria-hidden="true"><use href="#i-hex"></use></svg>
+      <svg class="section__spark section__spark--prices" width="18" height="18" aria-hidden="true"><use href="#i-spark"></use></svg>
+      <span class="glow-bar glow-bar--prices" aria-hidden="true"></span>
+      <div class="container reveal">
+        <header class="section__head">
+          <h2 class="section__title" id="prices-title">
+            <svg class="section__title-spark section__title-spark--blue" width="16" height="16" aria-hidden="true"><use href="#i-spark"></use></svg>
+            Стоимость
+            <svg class="section__title-spark section__title-spark--blue" width="16" height="16" aria-hidden="true"><use href="#i-spark"></use></svg>
+          </h2>
+          <p class="section__lead">Пакеты «Утро» и «Ночь» — фиксированная цена за весь интервал</p>
+        </header>
+
+        <div class="day-toggle" role="group" aria-label="Будни или выходные">
+          <button type="button" class="day-toggle__btn is-active" data-day="weekday" aria-pressed="true">Будни</button>
+          <button type="button" class="day-toggle__btn" data-day="weekend" aria-pressed="false">Выходные</button>
+        </div>
+
+        <div class="rail-wrap">
+          <div class="rail" id="price-rail" tabindex="0" aria-label="Карусель тарифов">
+
+            <article class="price-card price-card--blue">
+              <header class="price-card__media">
+                <figure class="price-card__photo" aria-hidden="true"><figcaption>Фото зоны СТАНДАРТ</figcaption></figure>
+                <div class="price-card__title-row">
+                  <h3>СТАНДАРТ</h3>
+                  <span class="price-card__pill price-card__pill--blue">от <span data-weekday="140" data-weekend="160">140</span> ₽</span>
+                </div>
+              </header>
+              <div class="price-card__body">
+                <ul class="price-card__chips">
+                  <li>RTX 3060</li><li>i5-12400F</li><li>DDR4 16GB</li><li>24" 240 Гц</li>
+                </ul>
+                <ul class="price-card__rows">
+                  <li><span class="slot">круглосуточно</span><strong>1 час</strong><span class="price"><span data-weekday="140" data-weekend="160">140</span> ₽</span></li>
+                  <li><span class="slot">круглосуточно</span><strong>3 часа</strong><span class="price"><span data-weekday="360" data-weekend="410">360</span> ₽</span></li>
+                  <li><span class="slot">круглосуточно</span><strong>5 часов</strong><span class="price"><span data-weekday="500" data-weekend="580">500</span> ₽</span></li>
+                  <li><span class="slot">08:00–14:00</span><strong>Утро</strong><span class="price"><span data-weekday="300" data-weekend="320">300</span> ₽</span></li>
+                  <li><span class="slot">22:00–08:00</span><strong>Ночь</strong><span class="price"><span data-weekday="610" data-weekend="700">610</span> ₽</span></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="price-card price-card--purple">
+              <header class="price-card__media">
+                <figure class="price-card__photo" aria-hidden="true"><figcaption>Фото зоны КОМФОРТ</figcaption></figure>
+                <div class="price-card__title-row">
+                  <h3>КОМФОРТ</h3>
+                  <span class="price-card__pill price-card__pill--purple">от <span data-weekday="180" data-weekend="200">180</span> ₽</span>
+                </div>
+              </header>
+              <div class="price-card__body">
+                <ul class="price-card__chips">
+                  <li>RTX 5060</li><li>i5-12400F</li><li>DDR4 32GB</li><li>24" 240 Гц</li>
+                </ul>
+                <ul class="price-card__rows">
+                  <li><span class="slot">круглосуточно</span><strong>1 час</strong><span class="price"><span data-weekday="180" data-weekend="200">180</span> ₽</span></li>
+                  <li><span class="slot">круглосуточно</span><strong>3 часа</strong><span class="price"><span data-weekday="460" data-weekend="510">460</span> ₽</span></li>
+                  <li><span class="slot">круглосуточно</span><strong>5 часов</strong><span class="price"><span data-weekday="720" data-weekend="800">720</span> ₽</span></li>
+                  <li><span class="slot">08:00–14:00</span><strong>Утро</strong><span class="price"><span data-weekday="320" data-weekend="340">320</span> ₽</span></li>
+                  <li><span class="slot">22:00–08:00</span><strong>Ночь</strong><span class="price"><span data-weekday="790" data-weekend="890">790</span> ₽</span></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="price-card price-card--orange">
+              <header class="price-card__media">
+                <figure class="price-card__photo" aria-hidden="true"><figcaption>Фото bootcamp-зоны</figcaption></figure>
+                <div class="price-card__title-row">
+                  <h3>BOOTCAMP</h3>
+                  <span class="price-card__pill price-card__pill--orange">от <span data-weekday="240" data-weekend="260">240</span> ₽</span>
+                </div>
+              </header>
+              <div class="price-card__body">
+                <ul class="price-card__chips">
+                  <li>RTX 4060 Ti</li><li>Ryzen 7 7800X3D</li><li>DDR5 32GB</li><li>24" 360 Гц</li>
+                </ul>
+                <ul class="price-card__rows">
+                  <li><span class="slot">круглосуточно</span><strong>1 час</strong><span class="price"><span data-weekday="240" data-weekend="260">240</span> ₽</span></li>
+                  <li><span class="slot">круглосуточно</span><strong>3 часа</strong><span class="price"><span data-weekday="610" data-weekend="670">610</span> ₽</span></li>
+                  <li><span class="slot">круглосуточно</span><strong>5 часов</strong><span class="price"><span data-weekday="900" data-weekend="980">900</span> ₽</span></li>
+                  <li><span class="slot">08:00–14:00</span><strong>Утро</strong><span class="price"><span data-weekday="400" data-weekend="420">400</span> ₽</span></li>
+                  <li><span class="slot">22:00–08:00</span><strong>Ночь</strong><span class="price"><span data-weekday="1050" data-weekend="1150">1050</span> ₽</span></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="price-card price-card--red">
+              <header class="price-card__media">
+                <figure class="price-card__photo" aria-hidden="true"><figcaption>Фото VIP-зоны</figcaption></figure>
+                <div class="price-card__title-row">
+                  <h3>VIP</h3>
+                  <span class="price-card__pill price-card__pill--red">от <span data-weekday="280" data-weekend="300">280</span> ₽</span>
+                </div>
+              </header>
+              <div class="price-card__body">
+                <ul class="price-card__chips">
+                  <li>RTX 4070 Ti</li><li>i5-13600KF</li><li>DDR5 32GB</li><li>27" 240 Гц 2K</li>
+                </ul>
+                <ul class="price-card__rows">
+                  <li><span class="slot">круглосуточно</span><strong>1 час</strong><span class="price"><span data-weekday="280" data-weekend="300">280</span> ₽</span></li>
+                  <li><span class="slot">круглосуточно</span><strong>3 часа</strong><span class="price"><span data-weekday="710" data-weekend="760">710</span> ₽</span></li>
+                  <li><span class="slot">круглосуточно</span><strong>5 часов</strong><span class="price"><span data-weekday="1150" data-weekend="1220">1150</span> ₽</span></li>
+                  <li><span class="slot">08:00–14:00</span><strong>Утро</strong><span class="price"><span data-weekday="420" data-weekend="440">420</span> ₽</span></li>
+                  <li><span class="slot">22:00–08:00</span><strong>Ночь</strong><span class="price"><span data-weekday="1230" data-weekend="1320">1230</span> ₽</span></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="price-card price-card--blue">
+              <header class="price-card__media">
+                <figure class="price-card__photo" aria-hidden="true"><figcaption>Фото PS5-зоны</figcaption></figure>
+                <div class="price-card__title-row">
+                  <h3>PS 5 PRO</h3>
+                  <span class="price-card__pill price-card__pill--blue">от <span data-weekday="270" data-weekend="300">270</span> ₽</span>
+                </div>
+              </header>
+              <div class="price-card__body">
+                <ul class="price-card__chips">
+                  <li>PS5 Pro</li><li>4K-телевизор</li><li>2× DualSense</li>
+                </ul>
+                <ul class="price-card__rows">
+                  <li><span class="slot">круглосуточно</span><strong>1 час</strong><span class="price"><span data-weekday="270" data-weekend="300">270</span> ₽</span></li>
+                  <li><span class="slot">круглосуточно</span><strong>3 часа</strong><span class="price"><span data-weekday="690" data-weekend="740">690</span> ₽</span></li>
+                  <li><span class="slot">круглосуточно</span><strong>5 часов</strong><span class="price"><span data-weekday="1000" data-weekend="1050">1000</span> ₽</span></li>
+                  <li><span class="slot">08:00–14:00</span><strong>Утро</strong><span class="price"><span data-weekday="410" data-weekend="430">410</span> ₽</span></li>
+                  <li><span class="slot">22:00–08:00</span><strong>Ночь</strong><span class="price"><span data-weekday="1180" data-weekend="1250">1180</span> ₽</span></li>
+                </ul>
+              </div>
+            </article>
+
+          </div>
+          <div class="rail-fade rail-fade--right" aria-hidden="true"></div>
+          <div class="rail-fade rail-fade--left" aria-hidden="true" hidden></div>
+          <div class="rail-nav">
+            <button type="button" class="rail-nav__btn rail-nav__btn--prev" data-rail-prev aria-label="Назад"><svg width="22" height="22"><use href="#i-arrow"></use></svg></button>
+            <button type="button" class="rail-nav__btn rail-nav__btn--next" data-rail-next aria-label="Вперёд"><svg width="22" height="22"><use href="#i-arrow"></use></svg></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ГАЛЕРЕЯ ============ -->
+    <section class="section" id="gallery" aria-labelledby="gallery-title">
+      <span class="section__watermark section__watermark--blue" aria-hidden="true">CLUB</span>
+      <svg class="section__hex section__hex--gallery" width="100" height="100" aria-hidden="true"><use href="#i-hex"></use></svg>
+      <svg class="section__spark section__spark--gallery" width="20" height="20" aria-hidden="true"><use href="#i-spark"></use></svg>
+      <div class="container reveal">
+        <header class="section__head">
+          <h2 class="section__title" id="gallery-title">
+            <svg class="section__title-spark section__title-spark--purple" width="16" height="16" aria-hidden="true"><use href="#i-spark"></use></svg>
+            Как у нас внутри
+            <svg class="section__title-spark section__title-spark--purple" width="16" height="16" aria-hidden="true"><use href="#i-spark"></use></svg>
+          </h2>
+        </header>
+        <div class="gallery-grid">
+          <figure class="gallery-grid__item gallery-grid__item--main"><figcaption>Фото общего зала</figcaption></figure>
+          <figure class="gallery-grid__item gallery-grid__item--wide"><figcaption>Фото bootcamp-зоны</figcaption></figure>
+          <figure class="gallery-grid__item"><figcaption>Фото VIP</figcaption></figure>
+          <figure class="gallery-grid__item"><figcaption>Фото PS5-зоны</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ОТЗЫВЫ ============ -->
+    <section class="section" id="reviews" aria-labelledby="reviews-title">
+      <span class="section__watermark section__watermark--red section__watermark--gg" aria-hidden="true">GG WP</span>
+      <svg class="section__hex section__hex--rev-1" width="120" height="120" aria-hidden="true"><use href="#i-hex"></use></svg>
+      <svg class="section__hex section__hex--rev-2" width="60" height="60" aria-hidden="true"><use href="#i-hex"></use></svg>
+      <svg class="section__spark section__spark--rev" width="16" height="16" aria-hidden="true"><use href="#i-spark"></use></svg>
+      <div class="container reveal">
+        <header class="section__head">
+          <h2 class="section__title" id="reviews-title">
+            <svg class="section__title-spark section__title-spark--orange" width="16" height="16" aria-hidden="true"><use href="#i-spark"></use></svg>
+            Что говорят гости
+            <svg class="section__title-spark section__title-spark--orange" width="16" height="16" aria-hidden="true"><use href="#i-spark"></use></svg>
+          </h2>
+        </header>
+        <div class="rail-wrap">
+          <div class="rail" id="review-rail" tabindex="0" aria-label="Карусель отзывов">
+
+            <article class="review-card">
+              <svg class="review-card__hex" width="90" height="90" aria-hidden="true"><use href="#i-hex"></use></svg>
+              <p class="review-card__stars" aria-label="Оценка 5 из 5">★★★★★</p>
+              <blockquote>Собираемся командой каждую неделю — 360 Гц реально чувствуется. Ночной пакет за 1050 выходит дешевле, чем играть из дома с моим железом.</blockquote>
+              <footer class="review-card__author">
+                <span class="review-card__avatar review-card__avatar--blue" aria-hidden="true">Д</span>
+                <span class="review-card__meta"><strong>Дмитрий</strong><span>Зона BOOTCAMP</span></span>
+              </footer>
+            </article>
+
+            <article class="review-card">
+              <svg class="review-card__hex" width="90" height="90" aria-hidden="true"><use href="#i-hex"></use></svg>
+              <p class="review-card__stars" aria-label="Оценка 5 из 5">★★★★★</p>
+              <blockquote>Приехала на такси, чек вернули на баланс — приятно. Чисто, тихо, администратор помог с настройкой чувствительности.</blockquote>
+              <footer class="review-card__author">
+                <span class="review-card__avatar review-card__avatar--magenta" aria-hidden="true">А</span>
+                <span class="review-card__meta"><strong>Алина</strong><span>Зона КОМФОРТ</span></span>
+              </footer>
+            </article>
+
+            <article class="review-card">
+              <svg class="review-card__hex" width="90" height="90" aria-hidden="true"><use href="#i-hex"></use></svg>
+              <p class="review-card__stars" aria-label="Оценка 5 из 5">★★★★★</p>
+              <blockquote>VIP с 2K-монитором и 4070 Ti — топ за свои деньги. Бронирую через телеграм, место всегда готово к приходу.</blockquote>
+              <footer class="review-card__author">
+                <span class="review-card__avatar review-card__avatar--maroon" aria-hidden="true">И</span>
+                <span class="review-card__meta"><strong>Игорь</strong><span>VIP</span></span>
+              </footer>
+            </article>
+
+            <article class="review-card">
+              <svg class="review-card__hex" width="90" height="90" aria-hidden="true"><use href="#i-hex"></use></svg>
+              <p class="review-card__stars" aria-label="Оценка 5 из 5">★★★★★</p>
+              <blockquote>За 140 в час — честный сетап: 240 Гц, всё летает. Взял пакет «Утро» на выходных, вышло дешевле кофе с булкой.</blockquote>
+              <footer class="review-card__author">
+                <span class="review-card__avatar review-card__avatar--red" aria-hidden="true">М</span>
+                <span class="review-card__meta"><strong>Максим</strong><span>Зона СТАНДАРТ</span></span>
+              </footer>
+            </article>
+
+            <article class="review-card">
+              <svg class="review-card__hex" width="90" height="90" aria-hidden="true"><use href="#i-hex"></use></svg>
+              <p class="review-card__stars" aria-label="Оценка 5 из 5">★★★★★</p>
+              <blockquote>Брали PS5-зону вдвоём на вечер — 4K-телевизор, два геймпада, никто не торопит. Теперь наше место для FC 26.</blockquote>
+              <footer class="review-card__author">
+                <span class="review-card__avatar review-card__avatar--blue" aria-hidden="true">С</span>
+                <span class="review-card__meta"><strong>Соня</strong><span>PS 5 PRO</span></span>
+              </footer>
+            </article>
+
+            <article class="review-card">
+              <svg class="review-card__hex" width="90" height="90" aria-hidden="true"><use href="#i-hex"></use></svg>
+              <p class="review-card__stars" aria-label="Оценка 5 из 5">★★★★★</p>
+              <blockquote>Играли отборочные на турнире клуба — организация чёткая, 7800X3D не проседает даже в замесах. Призы реально начислили на баланс.</blockquote>
+              <footer class="review-card__author">
+                <span class="review-card__avatar review-card__avatar--orange" aria-hidden="true">А</span>
+                <span class="review-card__meta"><strong>Артём</strong><span>Зона BOOTCAMP</span></span>
+              </footer>
+            </article>
+
+            <article class="review-card">
+              <svg class="review-card__hex" width="90" height="90" aria-hidden="true"><use href="#i-hex"></use></svg>
+              <p class="review-card__stars" aria-label="Оценка 5 из 5">★★★★★</p>
+              <blockquote>Ночь с 22 до 8 за 610 — лучшая цена в районе. Тихо, кресла удобные, под утро администратор сделал чай.</blockquote>
+              <footer class="review-card__author">
+                <span class="review-card__avatar review-card__avatar--magenta" aria-hidden="true">К</span>
+                <span class="review-card__meta"><strong>Кира</strong><span>Ночной пакет</span></span>
+              </footer>
+            </article>
+
+          </div>
+          <div class="rail-fade rail-fade--right" aria-hidden="true"></div>
+          <div class="rail-fade rail-fade--left" aria-hidden="true" hidden></div>
+          <div class="rail-nav">
+            <button type="button" class="rail-nav__btn rail-nav__btn--prev" data-rail-prev aria-label="Назад"><svg width="22" height="22"><use href="#i-arrow"></use></svg></button>
+            <button type="button" class="rail-nav__btn rail-nav__btn--next" data-rail-next aria-label="Вперёд"><svg width="22" height="22"><use href="#i-arrow"></use></svg></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ БРОНИРОВАНИЕ ============ -->
+    <section class="section section--last" id="booking" aria-labelledby="booking-title">
+      <span class="section__watermark section__watermark--blue" aria-hidden="true">GO PLAY</span>
+      <svg class="section__hex section__hex--booking" width="96" height="96" aria-hidden="true"><use href="#i-hex"></use></svg>
+      <span class="stripes stripes--booking" aria-hidden="true"><i></i><i></i><i></i></span>
+      <div class="container reveal">
+        <header class="section__head">
+          <h2 class="section__title" id="booking-title">
+            <svg class="section__title-spark section__title-spark--red" width="16" height="16" aria-hidden="true"><use href="#i-spark"></use></svg>
+            Забронировать место
+            <svg class="section__title-spark section__title-spark--red" width="16" height="16" aria-hidden="true"><use href="#i-spark"></use></svg>
+          </h2>
+        </header>
+        <div class="booking-grid">
+
+          <div class="booking-form-card">
+            <form class="booking-form" id="booking-form" novalidate>
+              <p class="booking-form__note">Оставьте заявку — администратор подтвердит бронь в течение 15 минут.</p>
+              <div class="booking-form__grid">
+                <div class="field">
+                  <label for="bf-name">Имя</label>
+                  <input id="bf-name" name="name" type="text" placeholder="Как к вам обращаться" autocomplete="name">
+                  <span class="field__error" hidden>Укажите имя</span>
+                </div>
+                <div class="field">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+                    <span class="field__error" hidden>Введите корректный номер</span>
+                </div>
+                <div class="field">
+                  <label for="bf-date">Дата</label>
+                  <input id="bf-date" name="date" type="date">
+                  <span class="field__error" hidden>Выберите дату</span>
+                </div>
+                <div class="field">
+                  <label for="bf-time">Время</label>
+                  <input id="bf-time" name="time" type="time">
+                  <span class="field__error" hidden>Выберите время</span>
+                </div>
+                <div class="field field--full">
+                  <label for="bf-zone">Зона</label>
+                  <select id="bf-zone" name="zone">
+                    <option value="СТАНДАРТ">СТАНДАРТ — от 140 ₽/час</option>
+                    <option value="КОМФОРТ">КОМФОРТ — от 180 ₽/час</option>
+                    <option value="BOOTCAMP">BOOTCAMP — от 240 ₽/час</option>
+                    <option value="VIP">VIP — от 280 ₽/час</option>
+                    <option value="PS 5 PRO">PS 5 PRO — от 270 ₽/час</option>
+                  </select>
+                </div>
+              </div>
+              <div class="booking-form__actions">
+                <button type="submit" class="btn btn--cta btn--lg">Отправить заявку</button>
+                <small>Нажимая кнопку, вы соглашаетесь на обработку персональных данных</small>
+              </div>
+            </form>
+            <div class="booking-success" id="booking-success" hidden>
+              <span class="booking-success__check" aria-hidden="true">✓</span>
+              <h3>Заявка отправлена</h3>
+              <p id="booking-success-text">Администратор позвонит вам для подтверждения.</p>
+              <button type="button" class="btn btn--outline" id="booking-reset">Новая заявка</button>
+            </div>
+          </div>
+
+          <aside class="booking-tg">
+            <svg class="booking-tg__hex" width="130" height="130" aria-hidden="true"><use href="#i-hex"></use></svg>
+            <svg class="booking-tg__spark" width="16" height="16" aria-hidden="true"><use href="#i-spark"></use></svg>
+            <h3>Быстрее — в Telegram</h3>
+            <p>Напишите администратору — забронируем место, ответим на вопросы и расскажем про ближайшие турниры.</p>
+            <a class="btn btn--blue" href="https://t.me/cybcentrkremen" target="_blank" rel="noopener">@cybcentrkremen</a>
+            <div class="booking-tg__phone">
+              <a href="tel:+79291015986">+7 (929) 101-59-86</a>
+              <span>Администратор · круглосуточно</span>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ ФУТЕР ============ -->
+  <footer class="site-footer" id="contacts">
+    <div class="site-footer__panel">
+      <div class="site-footer__deco" aria-hidden="true">
+        <span class="site-footer__glow-blue"></span>
+        <span class="site-footer__glow-red"></span>
+        <span class="site-footer__watermark">CYBER</span>
+        <svg class="site-footer__hex-1" width="130" height="130"><use href="#i-hex"></use></svg>
+        <svg class="site-footer__hex-2" width="70" height="70"><use href="#i-hex"></use></svg>
+      </div>
+
+      <div class="site-footer__cta">
+        <h2>Готовы играть на полную?</h2>
+        <p>Место ждёт — бронь занимает меньше минуты</p>
+        <div class="site-footer__cta-actions">
+          <a class="btn btn--cta btn--lg" href="#booking">Забронировать место</a>
+          <a class="btn btn--ghost btn--lg" href="https://t.me/cybcentrkremen" target="_blank" rel="noopener">Написать в Telegram</a>
+        </div>
+      </div>
+
+      <div class="site-footer__grid">
+        <div class="site-footer__about">
+          <p class="site-footer__brand">
+              <img src="assets/logo_full.svg" alt="Логотип Центра Киберспорта" class="site-footer__logo-img">
+          </p>
+          <p>Круглосуточный компьютерный клуб в Санкт-Петербурге: четыре игровые зоны, буткемп для команд и консольная зона PS5 Pro.</p>
+          <span class="site-footer__badge">Открыто 24/7</span>
+        </div>
+        <div class="site-footer__col">
+          <h3>Адрес</h3>
+          <address>Кременчугская ул., 11, корп. 1,<br>Санкт-Петербург</address>
+          <span>Работаем круглосуточно</span>
+        </div>
+        <div class="site-footer__col">
+          <h3>Контакты</h3>
+          <a href="tel:+79291015986">+7 (929) 101-59-86</a>
+          <a href="https://t.me/cybcentrkremen" target="_blank" rel="noopener">Telegram: @cybcentrkremen</a>
+          <span>Администратор на связи 24/7</span>
+        </div>
+        <nav class="site-footer__col" aria-label="Разделы сайта">
+          <h3>Разделы</h3>
+          <a href="#specs">ПК и залы</a>
+          <a href="#promo">Акции</a>
+          <a href="#prices">Цены</a>
+          <a href="#booking">Бронирование</a>
+        </nav>
+      </div>
+
+      <div class="site-footer__bottom">
+        <span>© 2026 Центр Киберспорта</span>
+        <span>Кременчугская ул., 11, корп. 1 · +7 (929) 101-59-86 · @cybcentrkremen</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="cybercenter.js"></script>
+</body>
+</html>
