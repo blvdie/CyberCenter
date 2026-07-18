@@ -1,8 +1,7 @@
-/* Центр Киберспорта — лендинг: интерактив */
 (function () {
   'use strict';
 
-  /* ---------- Бургер-меню ---------- */
+  /* Бургер-меню */
   var burger = document.getElementById('burger');
   var mobileMenu = document.getElementById('mobile-menu');
   if (burger && mobileMenu) {
@@ -25,8 +24,8 @@
     });
   }
 
-  /* ---------- Появление секций при скролле ---------- */
-  var revealEls = document.querySelectorAll('.reveal');
+  /* Появление секций при скролле */
+  var revealEls = document.querySelectorAll('.reveal, .stagger');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -39,13 +38,15 @@
     revealEls.forEach(function (el) { io.observe(el); });
     /* \u0421\u0442\u0440\u0430\u0445\u043e\u0432\u043a\u0430: \u0435\u0441\u043b\u0438 observer \u043d\u0435 \u0441\u0440\u0430\u0431\u043e\u0442\u0430\u043b (\u0432\u0441\u0442\u0440\u043e\u0435\u043d\u043d\u044b\u0435 iframe \u0438 \u0442.\u043f.) \u2014 \u043f\u043e\u043a\u0430\u0437\u044b\u0432\u0430\u0435\u043c \u0432\u0441\u0451 \u0447\u0435\u0440\u0435\u0437 \u0441\u0435\u043a\u0443\u043d\u0434\u0443 */
     setTimeout(function () {
-      revealEls.forEach(function (el) { el.classList.add('is-visible'); });
-    }, 1000);
+      revealEls.forEach(function (el) {
+        if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('is-visible');
+      });
+    }, 1200);
   } else {
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  /* ---------- Переключатель «Будни / Выходные» ---------- */
+  /* Переключатель «Будни / Выходные» */
   var toggleButtons = document.querySelectorAll('.day-toggle__btn');
   var priceValues = document.querySelectorAll('[data-weekday]');
 
@@ -66,8 +67,8 @@
     });
   });
 
-  /* ---------- Карусели (тарифы и отзывы) ---------- */
-  var CARD_STEP = 390; // ширина карточки + отступ
+  /* Карусели (тарифы и отзывы) */
+  var CARD_STEP = 390;
 
   function initRail(rail) {
     if (!rail) return;
@@ -82,7 +83,6 @@
       rail.scrollBy({ left: CARD_STEP, behavior: 'smooth' });
     });
 
-    /* Блюр показывается только там, где карточка реально обрезана */
     function updateFades() {
       var hasLeft = rail.scrollLeft > 4;
       var hasRight = rail.scrollLeft + rail.clientWidth < rail.scrollWidth - 4;
@@ -98,7 +98,72 @@
   initRail(document.getElementById('price-rail'));
   initRail(document.getElementById('review-rail'));
 
-/* ---------- Форма бронирования ---------- */
+/* Яндекс-карта с кастомным маркером */
+var YMAP_COORDS = [59.922882, 30.371222];
+function initYMap() {
+  var el = document.getElementById('ymap');
+  if (!el || typeof ymaps === 'undefined') return;
+  ymaps.ready(function () {
+    var map = new ymaps.Map(el, {
+      center: YMAP_COORDS,
+      zoom: 17,
+      controls: ['zoomControl', 'geolocationControl']
+    }, { suppressMapOpenBlock: true });
+
+    var iconLayout = ymaps.templateLayoutFactory.createClass(
+      '<div class="ymap-pin">' +
+        '<span class="ymap-pin__label">Центр Киберспорта</span>' +
+        '<span class="ymap-pin__dot"></span>' +
+      '</div>'
+    );
+
+    var placemark = new ymaps.Placemark(YMAP_COORDS, {
+      balloonContentHeader: 'Центр Киберспорта',
+      balloonContentBody:
+        '<span class="ymap-balloon__rating">★ 5.0 · компьютерный клуб</span>' +
+        '<p>Кременчугская ул., 11, корп. 1, Санкт-Петербург</p>' +
+        '<p class="ymap-balloon__hours">Открыто круглосуточно</p>',
+      balloonContentFooter:
+        '<div class="ymap-balloon__actions">' +
+          '<a class="pop-route" href="https://yandex.ru/maps/org/tsk_tsentr_kibersporta/60513031692/" target="_blank" rel="noopener">Маршрут</a>' +
+          '<a class="pop-tg" href="https://t.me/cybcentrkremen" target="_blank" rel="noopener">Telegram</a>' +
+        '</div>',
+      hintContent: 'Центр Киберспорта'
+    }, {
+      iconLayout: iconLayout,
+      iconShape: { type: 'Rectangle', coordinates: [[-110, 4], [70, 56]] },
+      balloonOffset: [-25, 40]
+    });
+    map.geoObjects.add(placemark);
+    map.behaviors.disable('scrollZoom');
+  });
+}
+if (document.readyState !== 'loading') initYMap();
+else document.addEventListener('DOMContentLoaded', initYMap);
+
+/* Параллакс декора при скролле */
+var parallaxEls = document.querySelectorAll('.section__hex');
+if (parallaxEls.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  var ticking = false;
+  function applyParallax() {
+    var vh = window.innerHeight;
+    parallaxEls.forEach(function (el, i) {
+      var r = el.getBoundingClientRect();
+      var center = r.top + r.height / 2;
+      var progress = (center - vh / 2) / vh;
+      var depth = (i % 3 === 0) ? 46 : (i % 3 === 1 ? -30 : 22);
+      el.style.transform = 'translate3d(0,' + (progress * depth).toFixed(1) + 'px,0)';
+    });
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { window.requestAnimationFrame(applyParallax); ticking = true; }
+  }, { passive: true });
+  window.addEventListener('resize', applyParallax);
+  applyParallax();
+}
+
+/* Форма бронирования */
 var form = document.getElementById('booking-form');
 if (form) {
     var success = document.getElementById('booking-success');
@@ -136,11 +201,12 @@ if (form) {
 
         if (errName || errPhone || errDate || errTime) return;
 
-        // Блокируем кнопку
+      var card = form.closest('.booking-form-card');
+      if (card) card.style.minHeight = card.offsetHeight + 'px';
+
         submitBtn.disabled = true;
         submitBtn.textContent = 'Отправка...';
 
-        // Собираем данные
         var formData = new FormData();
         formData.append('name', name.value.trim());
         formData.append('phone', phone.value.trim());
@@ -148,7 +214,6 @@ if (form) {
         formData.append('time', time.value);
         formData.append('zone', zone.options[zone.selectedIndex].text);
 
-        // Отправляем на сервер
         fetch('send.php', {
             method: 'POST',
             body: formData
@@ -187,4 +252,102 @@ if (form) {
         submitBtn.textContent = originalBtnText;
     });
 }
+})();
+
+/* Доп. скролл-анимации */
+(function () {
+  'use strict';
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  document.body.appendChild(bar);
+
+  if (!reduced) {
+    document.querySelectorAll('.section .container.reveal').forEach(function (el, i) {
+      el.classList.add(i % 2 === 0 ? 'reveal--left' : 'reveal--right');
+    });
+    var zg = document.querySelector('.zone-grid.stagger');
+    if (zg) zg.classList.add('stagger--pop');
+    var gal = document.querySelector('.gallery-grid.stagger');
+    if (gal) gal.classList.add('stagger--pop');
+    var pg = document.querySelector('.promo-grid.stagger');
+    if (pg) pg.classList.add('stagger--tilt');
+  }
+
+  var extras = [];
+  ['.map-block', '.site-footer'].forEach(function (sel) {
+    var el = document.querySelector(sel);
+    if (el && !el.classList.contains('reveal')) {
+      el.classList.add('reveal');
+      extras.push(el);
+    }
+  });
+  if ('IntersectionObserver' in window && extras.length) {
+    var io2 = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io2.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    extras.forEach(function (el) { io2.observe(el); });
+  } else {
+    extras.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  var nums = document.querySelectorAll('.stats__item strong');
+  if (!reduced && 'IntersectionObserver' in window && nums.length) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        cio.unobserve(entry.target);
+        var el = entry.target;
+        var template = el.textContent;
+        var m = template.match(/\d+/);
+        if (!m || parseInt(m[0], 10) < 10) return;
+        var target = parseInt(m[0], 10);
+        var startTs = null;
+        function tick(ts) {
+          if (startTs === null) startTs = ts;
+          var p = Math.min((ts - startTs) / 1800, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = template.replace(m[0], String(Math.round(target * eased)));
+          if (p < 1) window.requestAnimationFrame(tick);
+          else el.textContent = template;
+        }
+        window.requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.7 });
+    nums.forEach(function (el) { cio.observe(el); });
+  }
+
+  var header = document.querySelector('.site-header');
+  var wms = reduced ? [] : document.querySelectorAll('.section__watermark');
+  var ticking = false;
+
+  function onScroll() {
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    var y = window.scrollY || doc.scrollTop;
+    bar.style.transform = 'scaleX(' + (max > 0 ? y / max : 0) + ')';
+    if (header) header.classList.toggle('is-scrolled', y > 24);
+
+    var vh = window.innerHeight;
+    wms.forEach(function (el, i) {
+      var r = el.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > vh + 100) return; // не считаем то, что вне экрана
+      var progress = (r.top + r.height / 2 - vh / 2) / vh;
+      var dir = (i % 2 === 0) ? 1 : -1;
+      el.style.transform = 'translateX(calc(-50% + ' + (progress * 70 * dir).toFixed(1) + 'px)) skewX(-8deg)';
+    });
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!ticking) { window.requestAnimationFrame(onScroll); ticking = true; }
+  }, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
 })();
