@@ -10,7 +10,6 @@
 </head>
 <body>
 
-  <!-- SVG-спрайт иконок -->
   <svg class="sprite" aria-hidden="true">
     <symbol id="i-monitor" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"></rect><path d="M8 20h8"></path><path d="M12 16v4"></path></g></symbol>
     <symbol id="i-brain" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"></path><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"></path><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"></path></g></symbol>
@@ -24,14 +23,14 @@
     <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"></path></symbol>
   </svg>
 
-  <!-- Фоновые свечения страницы -->
+  <!-- Фоновый свет страницы -->
   <div class="page-glows" aria-hidden="true">
     <div class="page-glows__blue"></div>
     <div class="page-glows__red"></div>
     <div class="page-glows__purple"></div>
   </div>
 
-  <!-- ============ ШАПКА ============ -->
+  <!-- ШАПКА -->
   <header class="site-header">
     <div class="site-header__bar">
       <div class="site-header__glow" aria-hidden="true">
@@ -54,8 +53,10 @@
           <span class="site-header__phone-note">круглосуточно</span>
         </a>
         <a class="btn btn--cta site-header__cta" href="#booking">Забронировать</a>
-        <button type="button" class="site-header__burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
-          <span></span><span></span><span></span>
+    <button type="button" class="site-header__burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3 6H21M3 12H21M3 18H21" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
         </button>
       </div>
     </div>
@@ -74,10 +75,11 @@
 
   <main>
 
-    <!-- ============ HERO ============ -->
+    <!-- HERO -->
     <section class="hero" id="top" aria-label="Главная">
       <div class="hero__box">
-        <figure class="hero__media" aria-hidden="true">
+        <figure class="hero__media">
+            <img src="img/hero.jpg" alt="Игровой зал Центра Киберспорта" class="hero__media-img">
         </figure>
         <div class="hero__scrim" aria-hidden="true"></div>
         <div class="hero__deco" aria-hidden="true">
@@ -96,7 +98,7 @@
           <span class="glow-bar glow-bar--hero-red"></span>
         </div>
         <div class="hero__content">
-          <p class="hero__badge">Санкт-Петербург · Кременчугская, 11 · открыто 24/7</p>
+          <p class="hero__badge">Санкт-Петербург · Кременчугская, 11к1 · открыто 24/7</p>
           <h1 class="hero__title">Центр<br>Киберспорта</h1>
           <span class="hero__divider" aria-hidden="true"></span>
           <p class="hero__subtitle">Мощные ПК до RTX 4070 Ti, мониторы до 360 Гц, ночные пакеты и PS5 Pro — от 140 рублей в час</p>
@@ -106,7 +108,7 @@
           </div>
         </div>
       </div>
-      <ul class="stats" aria-label="Ключевые факты">
+      <ul class="stats stagger" aria-label="Ключевые факты">
         <li class="stats__item stats__item--blue"><svg class="stats__hex" width="64" height="64" aria-hidden="true"><use href="#i-hex"></use></svg><strong>24/7</strong><span>без выходных</span></li>
         <li class="stats__item stats__item--red"><svg class="stats__hex" width="64" height="64" aria-hidden="true"><use href="#i-hex"></use></svg><strong>от 140 ₽</strong><span>за час игры</span></li>
         <li class="stats__item stats__item--purple"><svg class="stats__hex" width="64" height="64" aria-hidden="true"><use href="#i-hex"></use></svg><strong>360 Гц</strong><span>мониторы в bootcamp</span></li>
@@ -114,7 +116,7 @@
       </ul>
     </section>
 
-    <!-- ============ ПК И ЗАЛЫ ============ -->
+    <!-- ПК И ЗАЛЫ -->
     <section class="section" id="specs" aria-labelledby="specs-title">
       <span class="section__watermark section__watermark--blue" aria-hidden="true">GAME ZONE</span>
       <svg class="section__hex section__hex--specs-1" width="120" height="120" aria-hidden="true"><use href="#i-hex"></use></svg>
@@ -130,7 +132,7 @@
           </h2>
           <p class="section__lead">Железо и периферия в каждой зоне</p>
         </header>
-        <div class="zone-grid">
+        <div class="zone-grid stagger">
 
           <article class="zone-card zone-card--blue">
             <span class="zone-card__bar" aria-hidden="true"></span>
@@ -216,7 +218,7 @@
       </div>
     </section>
 
-    <!-- ============ АКЦИИ И БОНУСЫ ============ -->
+    <!-- АКЦИИ И БОНУСЫ -->
     <section class="section" id="promo" aria-labelledby="promo-title">
       <span class="section__watermark section__watermark--red" aria-hidden="true">BONUS</span>
       <svg class="section__hex section__hex--promo-1" width="110" height="110" aria-hidden="true"><use href="#i-hex"></use></svg>
@@ -232,7 +234,7 @@
           </h2>
           <p class="section__lead">Играть у нас выгоднее, чем кажется</p>
         </header>
-        <div class="promo-grid">
+        <div class="promo-grid stagger">
 
           <article class="promo-card promo-card--blue">
             <span class="promo-card__streak" aria-hidden="true"></span>
@@ -262,7 +264,7 @@
       </div>
     </section>
 
-    <!-- ============ СТОИМОСТЬ ============ -->
+    <!-- СТОИМОСТЬ -->
     <section class="section" id="prices" aria-labelledby="prices-title">
       <span class="section__watermark section__watermark--blue section__watermark--play" aria-hidden="true">PLAY</span>
       <svg class="section__hex section__hex--prices-1" width="110" height="110" aria-hidden="true"><use href="#i-hex"></use></svg>
@@ -285,11 +287,13 @@
         </div>
 
         <div class="rail-wrap">
-          <div class="rail" id="price-rail" tabindex="0" aria-label="Карусель тарифов">
+          <div class="rail stagger" id="price-rail" tabindex="0" aria-label="Карусель тарифов">
 
             <article class="price-card price-card--blue">
               <header class="price-card__media">
-                <figure class="price-card__photo" aria-hidden="true"><figcaption>Фото зоны СТАНДАРТ</figcaption></figure>
+                <figure class="price-card__photo">
+                  <img src="img/zone-standart.jpg" alt="Зона СТАНДАРТ" class="price-card__photo-img">
+                </figure>
                 <div class="price-card__title-row">
                   <h3>СТАНДАРТ</h3>
                   <span class="price-card__pill price-card__pill--blue">от <span data-weekday="140" data-weekend="160">140</span> ₽</span>
@@ -311,7 +315,9 @@
 
             <article class="price-card price-card--purple">
               <header class="price-card__media">
-                <figure class="price-card__photo" aria-hidden="true"><figcaption>Фото зоны КОМФОРТ</figcaption></figure>
+                <figure class="price-card__photo">
+                  <img src="img/zone-comfort.jpg" alt="Зона КОМФОРТ" class="price-card__photo-img">
+                </figure>
                 <div class="price-card__title-row">
                   <h3>КОМФОРТ</h3>
                   <span class="price-card__pill price-card__pill--purple">от <span data-weekday="180" data-weekend="200">180</span> ₽</span>
@@ -333,7 +339,9 @@
 
             <article class="price-card price-card--orange">
               <header class="price-card__media">
-                <figure class="price-card__photo" aria-hidden="true"><figcaption>Фото bootcamp-зоны</figcaption></figure>
+                <figure class="price-card__photo">
+                  <img src="img/zone-bootcamp.jpg" alt="Зона BOOTCAMP" class="price-card__photo-img">
+                </figure>
                 <div class="price-card__title-row">
                   <h3>BOOTCAMP</h3>
                   <span class="price-card__pill price-card__pill--orange">от <span data-weekday="240" data-weekend="260">240</span> ₽</span>
@@ -355,7 +363,9 @@
 
             <article class="price-card price-card--red">
               <header class="price-card__media">
-                <figure class="price-card__photo" aria-hidden="true"><figcaption>Фото VIP-зоны</figcaption></figure>
+                <figure class="price-card__photo">
+                  <img src="img/zone-vip.jpg" alt="Зона VIP" class="price-card__photo-img">
+                </figure>
                 <div class="price-card__title-row">
                   <h3>VIP</h3>
                   <span class="price-card__pill price-card__pill--red">от <span data-weekday="280" data-weekend="300">280</span> ₽</span>
@@ -377,7 +387,9 @@
 
             <article class="price-card price-card--blue">
               <header class="price-card__media">
-                <figure class="price-card__photo" aria-hidden="true"><figcaption>Фото PS5-зоны</figcaption></figure>
+                <figure class="price-card__photo">
+                  <img src="img/zone-ps5.jpg" alt="Зона PS5PRO" class="price-card__photo-img">
+                </figure>
                 <div class="price-card__title-row">
                   <h3>PS 5 PRO</h3>
                   <span class="price-card__pill price-card__pill--blue">от <span data-weekday="270" data-weekend="300">270</span> ₽</span>
@@ -408,7 +420,7 @@
       </div>
     </section>
 
-    <!-- ============ ГАЛЕРЕЯ ============ -->
+    <!-- ГАЛЕРЕЯ -->
     <section class="section" id="gallery" aria-labelledby="gallery-title">
       <span class="section__watermark section__watermark--blue" aria-hidden="true">CLUB</span>
       <svg class="section__hex section__hex--gallery" width="100" height="100" aria-hidden="true"><use href="#i-hex"></use></svg>
@@ -421,16 +433,16 @@
             <svg class="section__title-spark section__title-spark--purple" width="16" height="16" aria-hidden="true"><use href="#i-spark"></use></svg>
           </h2>
         </header>
-        <div class="gallery-grid">
-          <figure class="gallery-grid__item gallery-grid__item--main"><figcaption>Фото общего зала</figcaption></figure>
-          <figure class="gallery-grid__item gallery-grid__item--wide"><figcaption>Фото bootcamp-зоны</figcaption></figure>
-          <figure class="gallery-grid__item"><figcaption>Фото VIP</figcaption></figure>
-          <figure class="gallery-grid__item"><figcaption>Фото PS5-зоны</figcaption></figure>
+        <div class="gallery-grid stagger">
+          <figure class="gallery-grid__item gallery-grid__item--main"><img src="img/zone-standart.jpg" alt="Общий зал" class="gallery-grid__item-img"><figcaption>Общий игровой зал</figcaption></figure>
+          <figure class="gallery-grid__item gallery-grid__item--wide"><img src="img/zone-bootcamp.jpg" alt="Буткемп" class="gallery-grid__item-img"><figcaption>Bootcamp-зона</figcaption></figure>
+          <figure class="gallery-grid__item"><img src="img/zone-vip.jpg" alt="Випка" class="gallery-grid__item-img"><figcaption>VIP-зона</figcaption></figure>
+          <figure class="gallery-grid__item"><img src="img/zone-ps5.jpg" alt="ПС" class="gallery-grid__item-img"><figcaption>Зона PS5 Pro</figcaption></figure>
         </div>
       </div>
     </section>
 
-    <!-- ============ ОТЗЫВЫ ============ -->
+    <!-- ОТЗЫВЫ -->
     <section class="section" id="reviews" aria-labelledby="reviews-title">
       <span class="section__watermark section__watermark--red section__watermark--gg" aria-hidden="true">GG WP</span>
       <svg class="section__hex section__hex--rev-1" width="120" height="120" aria-hidden="true"><use href="#i-hex"></use></svg>
@@ -445,7 +457,7 @@
           </h2>
         </header>
         <div class="rail-wrap">
-          <div class="rail" id="review-rail" tabindex="0" aria-label="Карусель отзывов">
+          <div class="rail stagger" id="review-rail" tabindex="0" aria-label="Карусель отзывов">
 
             <article class="review-card">
               <svg class="review-card__hex" width="90" height="90" aria-hidden="true"><use href="#i-hex"></use></svg>
@@ -528,8 +540,8 @@
       </div>
     </section>
 
-    <!-- ============ БРОНИРОВАНИЕ ============ -->
-    <section class="section section--last" id="booking" aria-labelledby="booking-title">
+    <!-- БРОНИРОВАНИЕ -->
+    <section class="section" id="booking" aria-labelledby="booking-title">
       <span class="section__watermark section__watermark--blue" aria-hidden="true">GO PLAY</span>
       <svg class="section__hex section__hex--booking" width="96" height="96" aria-hidden="true"><use href="#i-hex"></use></svg>
       <span class="stripes stripes--booking" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -541,7 +553,7 @@
             <svg class="section__title-spark section__title-spark--red" width="16" height="16" aria-hidden="true"><use href="#i-spark"></use></svg>
           </h2>
         </header>
-        <div class="booking-grid">
+        <div class="booking-grid stagger">
 
           <div class="booking-form-card">
             <form class="booking-form" id="booking-form" novalidate>
@@ -607,9 +619,31 @@
       </div>
     </section>
 
+    <!-- КАРТА -->
+    <section class="section section--last" id="map" aria-labelledby="map-title">
+      <span class="section__watermark section__watermark--blue section__watermark--play" aria-hidden="true">WINNER</span>
+      <svg class="section__hex section__hex--booking" width="96" height="96" aria-hidden="true"><use href="#i-hex"></use></svg>
+      <div class="container reveal">
+        <header class="section__head">
+          <h2 class="section__title" id="map-title">
+            <svg class="section__title-spark section__title-spark--blue" width="16" height="16" aria-hidden="true"><use href="#i-spark"></use></svg>
+            Как нас найти
+            <svg class="section__title-spark section__title-spark--blue" width="16" height="16" aria-hidden="true"><use href="#i-spark"></use></svg>
+          </h2>
+          <p class="section__lead">Кременчугская ул., 11, корп. 1, Санкт-Петербург · круглосуточно</p>
+        </header>
+        <div class="map-block">
+          <div class="map-block__frame">
+            <div id="ymap" class="map-block__canvas" aria-label="Карта: Центр Киберспорта, Кременчугская ул., 11, корп. 1"></div>
+          </div>
+          <a class="map-block__link" href="https://yandex.ru/maps/org/tsk_tsentr_kibersporta/60513031692/" target="_blank" rel="noopener">Построить маршрут в Яндекс Картах →</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- ============ ФУТЕР ============ -->
+  <!-- ФУТЕР -->
   <footer class="site-footer" id="contacts">
     <div class="site-footer__panel">
       <div class="site-footer__deco" aria-hidden="true">
@@ -664,6 +698,7 @@
     </div>
   </footer>
 
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" defer></script>
   <script src="cybercenter.js"></script>
 </body>
 </html>
