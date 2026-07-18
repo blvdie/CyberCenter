@@ -23,11 +23,11 @@ $time    = htmlspecialchars($time, ENT_QUOTES, 'UTF-8');
 $zone    = htmlspecialchars($zone, ENT_QUOTES, 'UTF-8');
 
 $text = "<b>🔥 НОВАЯ БРОНЬ</b>\n\n"
-      . "👤 <b>Имя:</b> $name\n"
-      . "📞 <b>Телефон:</b> $phone\n"
-      . "📅 <b>Дата:</b> $date\n"
-      . " <b>Время:</b> $time\n"
-      . "🎮 <b>Зона:</b> $zone";
+      . "<b>Имя:</b> $name\n"
+      . "<b>Телефон:</b> $phone\n"
+      . "<b>Дата:</b> $date\n"
+      . "<b>Время:</b> $time\n"
+      . "<b>Зона:</b> $zone";
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, "https://api.telegram.org/bot$token/sendMessage");
