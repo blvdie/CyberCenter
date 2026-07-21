@@ -1,8 +1,8 @@
 <?php
 header('Content-Type: application/json');
 
-$token = "8877843737:AAHmFvKDlvlR7JH4Q1xOE6VMEPA42XKSguw";
-$chatId = "2004552725";
+$token = "СЮДА ТОКЕН";
+$chatId = "СЮДА ID";
 
 $name    = isset($_POST['name'])    ? trim($_POST['name'])    : '';
 $phone   = isset($_POST['phone'])   ? trim($_POST['phone'])   : '';
