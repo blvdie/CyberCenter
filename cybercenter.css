@@ -763,7 +763,7 @@ a:hover { color: #a8c0ff; }
   justify-content: center;
   gap: 4px;
   width: fit-content;
-  margin: 0 auto 36px;
+  margin: 0 auto 16px;
   padding: 5px;
   background: rgba(255,255,255,0.06);
   border: 1px solid var(--border-hairline);
@@ -794,7 +794,7 @@ a:hover { color: #a8c0ff; }
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  padding: 6px 4px 26px;
+  padding: 26px 4px 26px;
   margin: 0 -4px;
 }
 .rail::-webkit-scrollbar { display: none; }
@@ -1040,12 +1040,35 @@ a:hover { color: #a8c0ff; }
 .gallery-grid__item--main { grid-column: span 2; grid-row: span 2; }
 .gallery-grid__item--wide { grid-column: span 2; }
 
-/* Отзывы */
+/* ============ Бесконечная карусель отзывов ============ */
+.review-ticker-wrap {
+  overflow: hidden;
+  -webkit-mask: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+          mask: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.review-ticker {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: ticker-scroll 70s linear infinite;
+  will-change: transform;
+}
+.review-ticker-wrap:hover .review-ticker { animation-play-state: paused; }
+
+.review-ticker-wrap:hover .review-ticker,
+.review-ticker-wrap:focus-within .review-ticker { animation-play-state: paused; }
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
 
 .review-card {
   flex: none;
-  width: 372px;
-  scroll-snap-align: start;
+  width: 360px;
   position: relative;
   overflow: hidden;
   background: var(--surface-card);
@@ -1055,6 +1078,14 @@ a:hover { color: #a8c0ff; }
   display: flex;
   flex-direction: column;
   gap: 16px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: inherit;
+  text-decoration: none;
+}
+.review-card:hover {
+  border-color: rgba(236,35,65,0.6);
+  box-shadow: inset 0 0 0 1px rgba(236,35,65,0.25), 0 18px 40px rgba(6,7,16,0.65), 0 0 26px rgba(236,35,65,0.28);
 }
 .review-card__hex {
   position: absolute;
@@ -1076,31 +1107,11 @@ a:hover { color: #a8c0ff; }
 .review-card__author {
   display: flex;
   align-items: center;
-  gap: 12px;
   margin-top: auto;
 }
-.review-card__avatar {
-  width: 38px; height: 38px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 14px;
-  color: #fff;
-  flex: none;
-}
-.review-card__avatar--blue    { background: rgba(0,41,146,0.8); }
-.review-card__avatar--magenta { background: rgba(187,72,159,0.8); }
-.review-card__avatar--maroon  { background: rgba(134,20,37,0.9); }
-.review-card__avatar--red     { background: rgba(236,35,65,0.75); }
-.review-card__avatar--orange  { background: rgba(253,151,1,0.65); }
 .review-card__meta { display: flex; flex-direction: column; gap: 2px; }
 .review-card__meta strong { font-size: 14px; }
 .review-card__meta span   { font-size: 13px; color: var(--text-faint); }
-
-
 
 
 
@@ -1745,7 +1756,6 @@ nav.site-footer__col a:hover { color: #fff; }
     background: rgba(0,0,0,0.3);
 } 
 
-/* Доп. скролл-анимации */
 .scroll-progress {
   position: fixed;
   top: 0; left: 0;
@@ -1807,3 +1817,121 @@ nav.site-footer__col a:hover { color: #fff; }
 .section__watermark { transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
 
 .site-header__bar { transition: background 0.6s ease, box-shadow 0.6s ease; }
+
+@media (max-width: 760px) {
+  .section { overflow: clip; overflow-clip-margin: 60px; }
+}
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+.reveal {
+  transition: opacity 1.3s ease, transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.stagger > * {
+  transition: opacity 1.15s ease, transform 1.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section__watermark { transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+
+.scroll-progress { transition: transform 0.15s linear; }  
+
+.price-card--blue:hover {
+  border-color: rgba(0,41,146,0.9);
+  box-shadow: inset 0 0 0 1px rgba(0,41,146,0.35), 0 18px 40px rgba(6,7,16,0.65), 0 0 26px rgba(0,41,146,0.45);
+}
+.price-card--red:hover {
+  border-color: rgba(236,35,65,0.9);
+  box-shadow: inset 0 0 0 1px rgba(236,35,65,0.35), 0 18px 40px rgba(6,7,16,0.65), 0 0 26px rgba(236,35,65,0.45);
+}
+.price-card--purple:hover {
+  border-color: rgba(187,72,159,0.9);
+  box-shadow: inset 0 0 0 1px rgba(187,72,159,0.35), 0 18px 40px rgba(6,7,16,0.65), 0 0 26px rgba(187,72,159,0.45);
+}
+.price-card--orange:hover {
+  border-color: rgba(253,151,1,0.9);
+  box-shadow: inset 0 0 0 1px rgba(253,151,1,0.35), 0 18px 40px rgba(6,7,16,0.65), 0 0 26px rgba(253,151,1,0.45);
+}
+.price-card {
+  transition: border-color 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: rgba(255,255,255,0.45);
+  font-size: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.footer-link-btn:hover { color: #fff; }
+
+/* Баннер cookies */
+.cookie-banner {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 150;
+  background: rgba(13,14,26,0.96);
+  border: 1px solid var(--border-hairline);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 680px;
+  width: calc(100% - 32px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  animation: cookie-in 0.5s cubic-bezier(0.22,1,0.36,1) both;
+}
+.cookie-banner[hidden] { display: none; }
+.cookie-banner p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  flex: 1;
+}
+.cookie-banner__btn { flex: none; white-space: nowrap; padding: 10px 22px; font-size: 13px; }
+@keyframes cookie-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(16px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+@media (max-width: 560px) {
+  .cookie-banner { flex-direction: column; align-items: stretch; bottom: 16px; }
+  .cookie-banner__btn { text-align: center; }
+}
+
+/* Чекбокс согласия */
+.field--checkbox { flex-direction: column; align-items: flex-start; gap: 6px; }
+.checkbox-label { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 14px; color: var(--text-muted); line-height: 1.4; }
+.checkbox-label input[type="checkbox"] { flex: none; width: 18px; height: 18px; margin: 0; accent-color: rgb(236,35,65); cursor: pointer; }
+.link-btn { background: none; border: none; padding: 0; color: rgb(127,162,255); font-size: inherit; cursor: pointer; text-decoration: underline; }
+.link-btn:hover { color: #fff; }
+
+/* Модалка */
+.pd-modal { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.pd-modal[hidden] { display: none; }
+.pd-modal__backdrop { position: absolute; inset: 0; background: rgba(6,7,16,0.85); backdrop-filter: blur(6px); }
+.pd-modal__box { position: relative; z-index: 1; background: var(--surface-card); border: 1px solid var(--surface-card-border); border-radius: 24px; padding: 40px; max-width: 640px; width: 100%; max-height: 80vh; overflow-y: auto; }
+.pd-modal__box h2 { margin: 0 0 20px; font-family: var(--font-display); font-size: 20px; padding-right: 32px; }
+.pd-modal__body p { font-size: 14px; line-height: 1.7; color: var(--text-muted); margin: 0 0 12px; }
+.pd-modal__body ul { font-size: 14px; line-height: 1.7; color: var(--text-muted); margin: 0 0 12px; padding-left: 20px; }
+.pd-modal__body strong { color: #fff; }
+.pd-modal__close { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.07); border: 1px solid var(--border-hairline); border-radius: 50%; width: 36px; height: 36px; color: #fff; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.pd-modal__close:hover { background: rgba(255,255,255,0.14); }
+
+.booking-form .btn--cta {
+  width: 100%;
+}
+.field--checkbox {
+  margin-top: 4px;
+}
