@@ -96,7 +96,6 @@
   }
 
   initRail(document.getElementById('price-rail'));
-  initRail(document.getElementById('review-rail'));
 
 /* Яндекс-карта с кастомным маркером */
 var YMAP_COORDS = [59.922882, 30.371222];
@@ -141,7 +140,6 @@ function initYMap() {
 if (document.readyState !== 'loading') initYMap();
 else document.addEventListener('DOMContentLoaded', initYMap);
 
-/* Параллакс декора при скролле */
 var parallaxEls = document.querySelectorAll('.section__hex');
 if (parallaxEls.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   var ticking = false;
@@ -193,13 +191,16 @@ if (form) {
         var errPhone = (phone.value.match(/\d/g) || []).length < 10;
         var errDate = !date.value;
         var errTime = !time.value;
+        var consent = form.elements.consent;
+        var errConsent = !consent.checked;
 
         setError(name, errName);
         setError(phone, errPhone);
         setError(date, errDate);
         setError(time, errTime);
 
-        if (errName || errPhone || errDate || errTime) return;
+        setError(consent.closest('.field'), errConsent);
+        if (errName || errPhone || errDate || errTime || errConsent) return;
 
       var card = form.closest('.booking-form-card');
       if (card) card.style.minHeight = card.offsetHeight + 'px';
@@ -254,7 +255,6 @@ if (form) {
 }
 })();
 
-/* Доп. скролл-анимации */
 (function () {
   'use strict';
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -323,7 +323,7 @@ if (form) {
     nums.forEach(function (el) { cio.observe(el); });
   }
 
-  var header = document.querySelector('.site-header');
+var header = document.querySelector('.site-header');
   var wms = reduced ? [] : document.querySelectorAll('.section__watermark');
   var ticking = false;
 
@@ -337,7 +337,7 @@ if (form) {
     var vh = window.innerHeight;
     wms.forEach(function (el, i) {
       var r = el.getBoundingClientRect();
-      if (r.bottom < -100 || r.top > vh + 100) return; // не считаем то, что вне экрана
+      if (r.bottom < -100 || r.top > vh + 100) return;
       var progress = (r.top + r.height / 2 - vh / 2) / vh;
       var dir = (i % 2 === 0) ? 1 : -1;
       el.style.transform = 'translateX(calc(-50% + ' + (progress * 70 * dir).toFixed(1) + 'px)) skewX(-8deg)';
@@ -350,4 +350,61 @@ if (form) {
   }, { passive: true });
   window.addEventListener('resize', onScroll);
   onScroll();
+})();
+
+(function () {
+  var ticker = document.getElementById('review-ticker');
+  if (!ticker) return;
+
+  var cards = Array.from(ticker.children);
+  cards.forEach(function (card) {
+    var clone = card.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    ticker.appendChild(clone);
+  });
+
+  window.addEventListener('pageshow', function () {
+    ticker.style.animation = 'none';
+    ticker.offsetHeight;
+    ticker.style.animation = '';
+    if (document.activeElement) document.activeElement.blur();
+  });
+})();
+
+(function () {
+  function initModal(modalId, openIds, closeId, closeBgId) {
+    var modal = document.getElementById(modalId);
+    if (!modal) return;
+    var closeBtn = document.getElementById(closeId);
+    var closeBg = document.getElementById(closeBgId);
+
+    function open() { modal.hidden = false; document.body.style.overflow = 'hidden'; }
+    function close() { modal.hidden = true; document.body.style.overflow = ''; }
+
+    openIds.forEach(function (id) {
+      var btn = document.getElementById(id);
+      if (btn) btn.addEventListener('click', open);
+    });
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    if (closeBg) closeBg.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.hidden) close();
+    });
+  }
+
+  initModal('pd-modal', ['pd-modal-open', 'pd-modal-open-footer'], 'pd-modal-close', 'pd-modal-close-bg');
+  initModal('privacy-modal', ['privacy-modal-open', 'cookie-privacy-open'], 'privacy-modal-close', 'privacy-modal-close-bg');
+
+  var banner = document.getElementById('cookie-banner');
+  var acceptBtn = document.getElementById('cookie-accept');
+  if (banner && !localStorage.getItem('cookie-ok')) {
+    setTimeout(function () { banner.hidden = false; }, 1500);
+  }
+  if (acceptBtn) {
+    acceptBtn.addEventListener('click', function () {
+      banner.hidden = true;
+      localStorage.setItem('cookie-ok', '1');
+    });
+  }
+
 })();
