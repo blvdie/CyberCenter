@@ -169,6 +169,15 @@ if (form) {
     var submitBtn = form.querySelector('button[type="submit"]');
     var originalBtnText = submitBtn.textContent;
 
+    /* Запрет выбора прошедших дат */
+    var bfDate = document.getElementById('bf-date');
+    if (bfDate) {
+        var td = new Date();
+        bfDate.min = td.getFullYear() + '-' +
+            ('0' + (td.getMonth() + 1)).slice(-2) + '-' +
+            ('0' + td.getDate()).slice(-2);
+    }
+
     function fieldOf(input) { return input.closest('.field'); }
 
     function setError(input, hasError) {
@@ -214,6 +223,7 @@ if (form) {
         formData.append('date', date.value);
         formData.append('time', time.value);
         formData.append('zone', zone.options[zone.selectedIndex].text);
+        if (form.elements.website) formData.append('website', form.elements.website.value);
 
         fetch('send.php', {
             method: 'POST',
@@ -239,7 +249,7 @@ if (form) {
         })
         .catch(function(error) {
             console.error('Ошибка:', error);
-            alert('Ошибка соединения. Проверьте, что файл send.php существует и OpenServer запущен.');
+            alert('Не удалось отправить заявку. Позвоните нам или напишите в Telegram.');
             submitBtn.disabled = false;
             submitBtn.textContent = originalBtnText;
         });
@@ -393,7 +403,8 @@ var header = document.querySelector('.site-header');
   }
 
   initModal('pd-modal', ['pd-modal-open', 'pd-modal-open-footer'], 'pd-modal-close', 'pd-modal-close-bg');
-  initModal('privacy-modal', ['privacy-modal-open', 'cookie-privacy-open'], 'privacy-modal-close', 'privacy-modal-close-bg');
+  initModal('privacy-modal', ['privacy-modal-open', 'privacy-modal-open-form', 'cookie-privacy-open'], 'privacy-modal-close', 'privacy-modal-close-bg');
+  initModal('rules-modal', ['rules-modal-open'], 'rules-modal-close', 'rules-modal-close-bg');
 
   var banner = document.getElementById('cookie-banner');
   var acceptBtn = document.getElementById('cookie-accept');
