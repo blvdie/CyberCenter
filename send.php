@@ -1,8 +1,8 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
-$token  = "8877843737:AAHmFvKDlvlR7JH4Q1xOE6VMEPA42XKSguw";
-$chatId = "2004552725";
+$token  = "СЮДА ТОКЕН ИЗ ЧАТА";
+$chatId = "СЮДА АЙДИ ИЗ ЧАТА";
 
 if (!empty($_POST['website'])) {
     echo json_encode(['status' => 'success']);
